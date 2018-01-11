@@ -65,9 +65,83 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-console.log("HEY BRO WHAT'S UP");
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__domController__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__header__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__footer__ = __webpack_require__(4);
+
+
+
+
+
+const contentDiv = document.querySelector("#content");
+Object(__WEBPACK_IMPORTED_MODULE_0__domController__["a" /* render */])([Object(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */])(), Object(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* default */])(), Object(__WEBPACK_IMPORTED_MODULE_3__footer__["a" /* default */])()], contentDiv);
+
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const header = () => {
+  const header = document.createElement("header");
+  const title = document.createElement("h1");
+  title.textContent = "Gerry's Restaurant";
+  header.appendChild(title);
+
+  return header;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (header);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
+const render = (elements, root) => {
+  elements.forEach(element => {
+    root.appendChild(element);
+  });
+};
+
+
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const tabs = tabs => {
+  const tabElement = document.createElement("div");
+  tabElement.id = "tabContainer";
+  tabElement.textContent = "hello tabs";
+  return tabElement;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (tabs);
+
+
+/***/ }),
+/* 4 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+const footer = footer => {
+  const footerElement = document.createElement("div");
+  footerElement.id = "footer";
+  footerElement.textContent = "hello footer";
+  return footerElement;
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (footer);
 
 
 /***/ })
