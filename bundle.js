@@ -72,14 +72,28 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__domController__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__header__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tabs__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__footer__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__siteContent__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__footer__ = __webpack_require__(4);
+
 
 
 
 
 
 const contentDiv = document.querySelector("#content");
-Object(__WEBPACK_IMPORTED_MODULE_0__domController__["a" /* render */])([Object(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */])(), Object(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* default */])(), Object(__WEBPACK_IMPORTED_MODULE_3__footer__["a" /* default */])()], contentDiv);
+
+Object(__WEBPACK_IMPORTED_MODULE_0__domController__["a" /* render */])(
+  [
+    Object(__WEBPACK_IMPORTED_MODULE_1__header__["a" /* default */])(),
+    Object(__WEBPACK_IMPORTED_MODULE_2__tabs__["a" /* default */])([
+      { title: "About Us", element: Object(__WEBPACK_IMPORTED_MODULE_3__siteContent__["a" /* about */])(), default: true },
+      { title: "Menu", element: Object(__WEBPACK_IMPORTED_MODULE_3__siteContent__["c" /* menu */])() },
+      { title: "Contact Us", element: Object(__WEBPACK_IMPORTED_MODULE_3__siteContent__["b" /* contact */])() }
+    ]),
+    Object(__WEBPACK_IMPORTED_MODULE_4__footer__["a" /* default */])()
+  ],
+  contentDiv
+);
 
 
 /***/ }),
@@ -121,9 +135,36 @@ const render = (elements, root) => {
 "use strict";
 const tabs = tabs => {
   const tabElement = document.createElement("div");
-  tabElement.id = "tabContainer";
-  tabElement.textContent = "hello tabs";
+  tabElement.id = "tab-element";
+
+  const tabsContainer = document.createElement("div");
+  tabsContainer.id = "tabs-container";
+
+  const tabContent = document.createElement("div");
+  tabContent.id = "tab-content";
+
+  tabElement.appendChild(tabsContainer);
+  tabElement.appendChild(tabContent);
+
+  tabs.forEach(tab => createTab(tab, tabsContainer, tabContent));
+
   return tabElement;
+};
+
+const createTab = (tab, tabsContainer, tabContent) => {
+  const newTab = document.createElement("button");
+  newTab.textContent = tab.title;
+
+  newTab.onclick = () => {
+    tabContent.innerHTML = "";
+    tabContent.appendChild(tab.element);
+  };
+
+  tabsContainer.appendChild(newTab);
+  if (tab.default) {
+    tabContent.innerHtml = "";
+    tabContent.appendChild(tab.element);
+  }
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (tabs);
@@ -142,6 +183,47 @@ const footer = footer => {
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (footer);
+
+
+/***/ }),
+/* 5 */,
+/* 6 */,
+/* 7 */,
+/* 8 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return about; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return menu; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return contact; });
+const about = () => {
+  const about = document.createElement("div");
+  const title = document.createElement("h1");
+  title.textContent = "About us";
+  about.appendChild(title);
+
+  return about;
+};
+
+const menu = () => {
+  const menu = document.createElement("div");
+  const title = document.createElement("h1");
+  title.textContent = "menu us";
+  menu.appendChild(title);
+
+  return menu;
+};
+
+const contact = () => {
+  const contact = document.createElement("div");
+  const title = document.createElement("h1");
+  title.textContent = "contact us";
+  contact.appendChild(title);
+
+  return contact;
+};
+
+
 
 
 /***/ })
